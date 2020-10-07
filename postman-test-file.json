@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "ed29fdbf-67d6-48fa-b5ee-1d9c761e16bd",
+		"name": "Desafio 8 - Maratona Behind the Code API",
+		"description": "API para análise de fala e recomendação de carros da FCA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Analisa críticas contidas em um arquivo de áudio ou em um texto e recomenda um carro da FCA dependendo das críticas.",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "car",
+							"value": "ARGO\n"
+						},
+						{
+							"key": "audio",
+							"type": "file",
+							"src": "/W:/Development/PyCharm/desafio-8-2020/doc/source/dataset/audio_sample.flac"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://heber-desafio8.mybluemix.net/fiat?car=teste&audio=",
+					"protocol": "https",
+					"host": [
+						"heber-desafio8",
+						"mybluemix",
+						"net"
+					],
+					"path": [
+						"fiat"
+					],
+					"query": [
+						{
+							"key": "car",
+							"value": "teste"
+						},
+						{
+							"key": "audio",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Operação sucedida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "car",
+									"value": "<string>"
+								},
+								{
+									"key": "text",
+									"value": "<string>"
+								},
+								{
+									"key": "audio",
+									"value": "<binary>"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/recommend",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"recommend"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"entities\": [\n  {\n   \"entity\": \"<string>\",\n   \"sentiment\": \"<number>\",\n   \"mention\": \"<string>\"\n  },\n  {\n   \"entity\": \"<string>\",\n   \"sentiment\": \"<number>\",\n   \"mention\": \"<string>\"\n  }\n ],\n \"recommendation\": \"<string>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "https://heber-desafio8.mybluemix.net/fiat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "car",
+							"value": "ARGO",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "O painel de instrumentos do Fiat Argo traz uma tela de TFT de 3,5 polegadas com visor colorido para o computador de bordo, incluindo funções como velocímetro digital e o sensor de pressão de pneus, que vem de série.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://heber-desafio8.mybluemix.net/fiat",
+					"protocol": "https",
+					"host": [
+						"heber-desafio8",
+						"mybluemix",
+						"net"
+					],
+					"path": [
+						"fiat"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"id": "baseUrl",
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
